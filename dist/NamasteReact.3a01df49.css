@@ -1,0 +1,67 @@
+.header {
+  border: 2px solid #000;
+  justify-content: space-between;
+  width: 100%;
+  height: 6vw;
+  display: flex;
+}
+
+.logo {
+  width: 7vw;
+  margin-left: 2vw;
+}
+
+.navi > ul {
+  gap: 2vw;
+  list-style-type: none;
+  display: flex;
+}
+
+.navi {
+  margin-right: 3vw;
+}
+
+.search {
+  padding: 2vw;
+}
+
+.res-container {
+  flex-wrap: wrap;
+  gap: 4.3vw;
+  padding: 3vw 3vw 3vw 6vw;
+  display: flex;
+}
+
+.res-card {
+  background-color: #cccbcb;
+  border: .1vw solid #0000;
+  border-radius: 1vw;
+  width: 17vw;
+  overflow: hidden;
+  box-shadow: 0 .9vw .8vw #000000b3;
+}
+
+.res-card:hover {
+  cursor: pointer;
+  border: .1vw solid #000;
+  border-radius: 1vw;
+}
+
+.res-card img {
+  object-fit: cover;
+  width: 100%;
+  height: 12vw;
+}
+
+.res-card h3 {
+  color: #222;
+  margin: 1vw;
+  font-size: 1.4vw;
+}
+
+.res-card h4 {
+  color: #555;
+  margin: .5vw 1vw;
+  font-size: 1vw;
+}
+/*# sourceMappingURL=NamasteReact.3a01df49.css.map */

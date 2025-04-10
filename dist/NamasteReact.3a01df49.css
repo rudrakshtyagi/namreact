@@ -21,8 +21,9 @@
   margin-right: 3vw;
 }
 
-.search {
-  padding: 2vw;
+.filter-btn {
+  cursor: pointer;
+  margin: 1vw;
 }
 
 .res-container {
@@ -36,7 +37,10 @@
   background-color: #cccbcb;
   border: .1vw solid #0000;
   border-radius: 1vw;
+  flex-direction: column;
   width: 17vw;
+  height: 25vw;
+  display: flex;
   overflow: hidden;
   box-shadow: 0 .9vw .8vw #000000b3;
 }

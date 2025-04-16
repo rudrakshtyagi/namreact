@@ -21,6 +21,14 @@
   margin-right: 3vw;
 }
 
+.filter {
+  display: flex;
+}
+
+.search {
+  margin: 1vw;
+}
+
 .filter-btn {
   cursor: pointer;
   margin: 1vw;
@@ -67,5 +75,32 @@
   color: #555;
   margin: .5vw 1vw;
   font-size: 1vw;
+}
+
+.ShimmerContainer {
+  flex-wrap: wrap;
+  gap: 29px;
+  padding: 20px;
+  display: flex;
+}
+
+.ShimmerCard {
+  background: #afb6bd linear-gradient(to right, #b3bec8 0%, #a8aec0 20%, #b5bec8 40%, #afbbc7 100%) 0 0 / 800px 104px no-repeat;
+  border-radius: 10px;
+  width: 17vw;
+  height: 25vw;
+  animation: 1.2s linear infinite shimmer;
+  display: inline-block;
+  position: relative;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -800px 0;
+  }
+
+  100% {
+    background-position: 800px 0;
+  }
 }
 /*# sourceMappingURL=NamasteReact.3a01df49.css.map */

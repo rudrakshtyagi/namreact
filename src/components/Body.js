@@ -1,10 +1,12 @@
 import ResturantCard from "./ResturantCard";
-
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 
 const Body = () => {
+  // ✅ Original data
   const [listOfResturant, setListOfResturant] = useState([]);
+
+  // ✅ Filtered/display data
   const [filteredRestu, setFilteredRestu] = useState([]);
 
   const [searchValue, setSearchValue] = useState("");
@@ -16,13 +18,16 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=29.4886494&lng=77.6978334&carousel=true&third_party_vendor=1"
-      
     );
 
     const json = await data.json();
-    setListOfResturant(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+
+    const restaurants =
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+
+    // ✅ Set both original and filtered on first load
+    setListOfResturant(restaurants); // 🔹 original
+    setFilteredRestu(restaurants);   // 🔹 displayed
   };
 
   return listOfResturant.length === 0 ? (
@@ -43,12 +48,11 @@ const Body = () => {
           <button
             className="searchbtn"
             onClick={() => {
-              const filteredRestu = listOfResturant.filter((res) =>
+              // ✅ Always search from original list
+              const filtered = listOfResturant.filter((res) =>
                 res.info.name.toLowerCase().includes(searchValue.toLowerCase())
               );
-              setListOfResturant(filteredRestu);
-
-              
+              setFilteredRestu(filtered); // ✅ update display list only
             }}
           >
             search
@@ -58,23 +62,25 @@ const Body = () => {
         <button
           className="filter-btn"
           onClick={() => {
+            // ✅ Always filter from original list
             const filteredList = listOfResturant.filter(
               (res) => res.info.avgRating > 4
             );
-
-            setListOfResturant(filteredList);
+            setFilteredRestu(filteredList); // ✅ update display list only
           }}
         >
-          {" "}
-          Top rated resturant
+          Top rated restaurant
         </button>
       </div>
+
       <div className="res-container">
-        {listOfResturant.map((resturant) => (
+        {/* ✅ Render filteredRestu instead of listOfResturant */}
+        {filteredRestu.map((resturant) => (
           <ResturantCard key={resturant.info.id} resData={resturant} />
         ))}
       </div>
     </div>
   );
 };
+
 export default Body;

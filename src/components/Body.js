@@ -1,6 +1,8 @@
 import ResturantCard from "./ResturantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   // ✅ Original data
@@ -29,6 +31,16 @@ const Body = () => {
     setListOfResturant(restaurants); // 🔹 original
     setFilteredRestu(restaurants);   // 🔹 displayed
   };
+
+  //made custom msg fro being offline using or customn hook
+
+const onlineStatus=useOnlineStatus();
+
+if (onlineStatus===false) return (
+  <h1>udfhsdufhsdjfhj</h1>
+);
+
+
 
   return listOfResturant.length === 0 ? (
     <Shimmer />
@@ -76,7 +88,10 @@ const Body = () => {
       <div className="res-container">
         {/* ✅ Render filteredRestu instead of listOfResturant */}
         {filteredRestu.map((resturant) => (
-          <ResturantCard key={resturant.info.id} resData={resturant} />
+
+          <Link key={resturant.info.id} to={"/resturant/"+resturant.info.id}>
+          <ResturantCard resData={resturant} /> 
+          </Link>
         ))}
       </div>
     </div>
